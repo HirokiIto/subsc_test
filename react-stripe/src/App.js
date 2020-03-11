@@ -1,6 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Elements, StripeProvider } from 'react-stripe-elements';
+import CheckoutForm from './CheckoutForm';
+import config from './config/secret';
+
 
 function App() {
   return (
@@ -18,7 +22,15 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header>      
+      <StripeProvider apiKey={config.publicKey}>
+        <div className="container">
+          <h3 className="my-4">React Stripe Element Sample</h3>
+          <Elements>
+            <CheckoutForm />
+          </Elements>
+        </div>
+      </StripeProvider>      
     </div>
   );
 }
